@@ -1,0 +1,14 @@
+Guake with alt+num goto specific tab 
+
+After trying out Guake terminal, I found my self in need of an alt+num goto-tab shortcut. 
+Searching for it, I found here somebody making a patch to do that, but it was based on an 
+older version of guake (0.4.2). So here's the corrected patch for the 0.4.4 version. 
+No need to recompile, as the guake bin is actually a python file.
+
+Installation:
+1. Install guake (apt-get, yum, emerge ...)
+2. Patch:
+    cat modify.patch | sudo patch -p3 -b -d /usr/bin
+    
+
+guake-0.4.4: Unmodified source code. 

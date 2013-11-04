@@ -1,0 +1,59 @@
+diff a/src/guake b/src/guake
+--- a/usr/bin/guake	2013-02-10 10:42:35.817134998 -0300
++++ b/usr/bin/guake	2013-02-09 22:57:55.354219342 -0300
+@@ -551,6 +551,9 @@
+
+         # important widgets
+         self.window = self.get_widget('window-root')
++        # ugly hack to shortcut alt-NUM (go to tab) NUM work
++        self.gototabgroup = gtk.AccelGroup()
++        self.window.add_accel_group(self.gototabgroup)
+         self.notebook = self.get_widget('notebook-teminals')
+         self.tabs = self.get_widget('hbox-tabs')
+         self.toolbar = self.get_widget('toolbar')
+@@ -1228,17 +1231,37 @@
+         bnt.show()
+
+         self.tabs.pack_start(bnt, expand=False, padding=1)
++        self.update_accels()
+
+         self.notebook.append_page(box, None)
+         self.notebook.set_current_page(self.notebook.page_num(box))
+         box.terminal.grab_focus()
+         self.load_config()
+
++    def update_accels(self):
++        """Attribute accelerators for first ten tabs"""
++        tabs = self.tabs.get_children()
++        tabaccel = 1
++        for tab in tabs:
++            if tabaccel > 9:
++                break
++            real_accel = ord(str(tabaccel))
++            if tabaccel == 10:
++                real_accel = ord('0')
++            tab.add_accelerator('clicked', self.gototabgroup, real_accel, gtk.gdk.MOD1_MASK, ())
++            tabaccel += 1
++
++    def disconnect_accels(self):
++	    """Disconnect accelerators (to be called upon deleting a tab)"""
++	    for i in range(10):
++	        self.gototabgroup.disconnect_key(ord(str(i)), gtk.gdk.MOD1_MASK)
++
+     def delete_tab(self, pagepos, kill=True):
+         """This function will destroy the notebook page, terminal and
+         tab widgets and will call the function to kill interpreter
+         forked by vte.
+         """
++        self.disconnect_accels()
+         self.tabs.get_children()[pagepos].destroy()
+         self.notebook.remove_page(pagepos)
+         self.term_list.pop(pagepos).destroy()
+@@ -1251,6 +1274,7 @@
+             self.hide()
+             # avoiding the delay on next Guake show request
+             self.add_tab()
++        self.update_accels()
+
+     def delete_shell(self, pid):
+         """This function will kill the shell on a tab, trying to send

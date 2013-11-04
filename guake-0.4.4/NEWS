@@ -1,0 +1,134 @@
+changes since 0.4.3:
+
+  - New icon for both guake and guake-prefs
+  - Improved build scripts for themable icon installation
+  - Updated some autotools files
+  - Fixing a typo in the guake-prefs.desktop file (Zaitor)
+  - wm_class can't be get by gnome-shell css #414
+  - Add the missing "System" category required by FDO menu specification
+    (Jekyll Wu)
+  - Do not install the system-wide autostart file (Jekyll Wu)
+  - Call window.move/resize only when not in fullscreen mode #403
+    (Empee584)
+  - Terminal scrolls to the wrong position when hiding and unhiding in
+    fullscreen mode #258 (Empee584)
+  - Toggle fullscreen malfunction #371 (Empee584 & Sylvestre)
+  - Guake overlaped the second screen in a dual-monitor setup with a
+    sidepanel (Sylvestre)
+  - Tree items in Keyboard shortcuts tab of preferences window not
+    localized #280 (Robertd)
+  - Add option to start in fullscreen mode #408 (Dom Sekotill)
+  - Refactoring of the fullscreen logic and addition of the --fullscreen
+    flag (Marcel Partap)
+
+changes since 0.4.2:
+
+  - Better tab titling, based on VTE title sequences (Aleksandar
+    Krsteski & Max Ulidtko)
+  - Some drag & drop support (Max Ulidtko)
+  - Fix for the many times reported "gconf proxy port as int" issue
+    (Pingou)
+  - Better file layout which doesn't modify PYTHONPATH (Max Ulidtko)
+
+Updated translation and new translation:
+
+  - Russian (Vadim Kotov)
+  - Spanish (Ricardo A. Hermosilla Carrillo)
+  - Japanese (kazutaka)
+  - Catalan (el_libre como el chaval)
+
+changes since 0.4.1:
+
+Updated translations and new translations (unsorted):
+
+  - Norwegian (wty)
+  - Turkish (Berk Demirkır)
+  - Swedish (Daniel Nylander)
+  - Persian (Kasra Keshavarz)
+  - French (Bouska and Pingou)
+  - Russian (Pavel Alexeev and vkotovv)
+  - Polish (Piotr Drąg)
+  - Spanish, Castilian (dmartinezc)
+  - Italian (Marco Leogrande a.k.a. dark)
+  - Chinese simplified (甘露, Gan Lu)
+  - Portuguese/Brazilian (Djavan Fagundes)
+  - Japanese (kazutaka)
+  - Punjabi (A S Alam)
+
+Bugs/Features:
+
+  - Calling the hide() method when closing main window: #229 (Lincoln)
+
+  - Fixing dbus path and name for the RemoteControl object: #202
+    (Lincoln)
+
+  - Setting http{s,}_proxy vars before calling fork_command: #172
+    (Lincoln)
+
+  - Adding the `fr' lang to ALL_LINGUAS: #189 (Lincoln)
+
+  - Option to configure the color palette: #51 (Eduardo Grajeda)
+
+  - Do not hide when showing rename dialog (Aleksandar Krsteski)
+
+  - Fixing the tab renaming feature: #205 (Lincoln)
+
+changes since 0.4.0:
+
+Updated translation and new translation:
+  - Italian
+  - French
+  - Portuguese/Brazilian
+  - Novergian
+  - German
+  - Polish
+  - Greek
+  - Hungarian
+
+Bugs/Features:
+  - Change start message #168
+  - Add an option to the preference windows to create new tab in cwd #146
+  - Preferences windows are resizable #149
+  - Guake's windows not shown when ran for the first time #174
+  - Implement dbus interface to script with guake #150, #138, #105, #126, #128, #109
+  - Command line arguments implemented
+    -n create a new tab
+    -e execute a command on a defined tab
+    -r rename a tab
+    -t toggle visibility
+  - Improve regex to use character classes (improve the support of certain locales) #156
+  - Ask user if he really wants to quit when there is a child process #158
+  - Double click on a tab allows you to rename the tab #165
+  - Add more information on the INSTALL file 
+  - Tray icon position fixed #161
+
+Infrastructure:
+  - Move from guake-terminal.org to guake.org
+  - Set up a mailing-list at: http://lists.guake.org/cgi-bin/mailman/listinfo/guake
+
+
+
+
+changes since 0.2
+
+        * Making prefs dialog window better, including a better title,
+          fixing some paddings and spaces.
+
+        * Added backspace and delete compatibility options (thanks to
+          gnome-terminal guys =)
+
+        * Cleanup of data files (images and glade files), mostly images.
+
+        * Complete rewrite of tab system in the main window.
+
+        * Fixing all issues (I think =) in close tab feature.
+
+        * Adding tab rename feature.
+
+        * Making easier to grab keybinging shortcuts from the prefs
+          screen by using eggcellrendererkeys lib.
+
+        * Now we look for more python interpreters when filling
+          interpreters combo.
+
+        * Fixing a lot of bugs.
